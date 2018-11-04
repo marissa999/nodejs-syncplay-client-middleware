@@ -1,12 +1,12 @@
-var app = require("express")();
-var http = require("http").Server(app);
-var io = require("socket.io")(http);
+let app = require("express")();
+let http = require("http").Server(app);
+let io = require("socket.io")(http);
+
+let connections = [];
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/index.html");
 });
-
-let connections = [];
 
 io.on("connection", function(socket) {
   console.log("a user connected.");
